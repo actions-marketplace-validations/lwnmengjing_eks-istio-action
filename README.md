@@ -29,14 +29,13 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Deploy
-        uses: cancue/eks-action@v0.0.2
+        uses: lwnmengjing/eks-istio-action@v0.0.2
         env:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: $AWS_REGION
           cluster_name: $EKS_CLUSTER_NAME
+          istio_version: $ISTIO_VERSION
         with:
           args: |
-            kubectl set image deployment $K8S_DEPLOYMENT -n $K8S_NAMESPACE
-            $K8S_DEPLOYMENT=$DOCKER_IMAGE:$DOCKER_TAG &&
-            kubectl rollout status deployment/$K8S_DEPLOYMENT -n $K8S_NAMESPACE
+            istioctl install --set profile=demo
