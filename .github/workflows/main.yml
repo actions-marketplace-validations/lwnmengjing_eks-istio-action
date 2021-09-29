@@ -27,4 +27,4 @@ jobs:
 
       - name: docker-build-account
         run: |
-          docler build .
+          docker build .
