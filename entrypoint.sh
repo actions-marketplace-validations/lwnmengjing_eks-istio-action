@@ -9,6 +9,7 @@ sh -c "aws configure set aws_secret_access_key ${aws_secret_access_key}"
 sh -c "aws eks update-kubeconfig --region ${aws_region} --name ${cluster_name} --role-arn ${aws_role}"
 
 #istio
-curl -L https://istio.io/downloadIstio | ISTIO_VERSION=${istio_version} sh -
+sh -c "curl -L https://istio.io/downloadIstio | ISTIO_VERSION=${istio_version} sh -"
+sh -c "mv istio-${istio_version}/bin/* /usr/bin/"
 
 sh -c "$*"
