@@ -1,4 +1,4 @@
-name: "Istio on EKS Action"
+name: "Istio EKS Action"
 description: "Interacts with kubernetes clusters on eks by `istioctl` commands."
 branding:
   icon: 'box'
